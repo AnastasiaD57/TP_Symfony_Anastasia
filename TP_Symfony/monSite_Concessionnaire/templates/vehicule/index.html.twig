@@ -1,0 +1,42 @@
+{% extends "bootstrap.html.twig" %}
+{% block body %}
+    <h1>Liste des véhicules</h1>
+    <a href="{{ path("new_vehicule") }}" class="btn btn-success my-3"> Ajouter un nouveau véhicule</a>
+    <div class="table-responsive text-center">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Modèle</th>
+                    <th>Description</th>
+                    <th class="col-1">Prix</th>
+                    <th>Lien de redirection</th>
+                    <th class="col-1">Date de création</th>
+                    <th>Image</th>
+                    <th class="col-1">En Vente</th>
+                    <th class="col-1">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key , value in vehicules %}
+                    <tr>
+                        <td>{{ value.id }}</td>
+                        <td>{{ value.nom }}</td>
+                        <td>{{ value.modele }}</td>
+                        <td class="text-break">{{ value.description }}</td>
+                        <td>{{ value.prix }}</td>
+                        <td class="text-break">{{ value.lienredirection }}</td>
+                        <td>{{ value.formattedDateCreation }}</td>
+                        <td class="text-break">{{ value.image }}</td>
+                        <td>{{ value.isEnVente ? "Oui" : "Non" }}</td>
+                        <td>
+                            <a href="{{ path("update_vehicule", { id : value.id }) }}" class="btn btn-warning">Modifier</a>
+                            <a href="{{ path("delete_vehicule", { id : value.id }) }}" class="btn btn-danger ms-3">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

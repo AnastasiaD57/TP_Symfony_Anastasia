@@ -1,0 +1,34 @@
+{% extends "bootstrap.html.twig" %}
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+    <a href="{{ path("app_register") }}" class="btn btn-success my-3"> Ajouter un nouvel utilisateur</a>
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Pseudo</th>
+                    <th>Email</th>
+                    <th>Date de création</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key , value in users %}
+                    <tr>
+                        <td>{{ value.id }}</td>
+                        <td>{{ value.pseudo }}</td>
+                        <td>{{ value.email }}</td>
+                        <td>{{ value.formattedDateCreation }}</td>
+                        <td>
+                                <a href="{{ path("update_user", { id : value.id }) }}" class="btn btn-warning">Modifier</a>
+                            {% if value.id != app.user.id %}
+                                <a href="{{ path("delete_user", { id : value.id }) }}" class="btn btn-danger ms-3">Supprimer</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

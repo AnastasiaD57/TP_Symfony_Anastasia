@@ -1,0 +1,55 @@
+{% extends "bootstrap.html.twig" %}
+
+{% block body %}
+
+    <h1 class="py-3">Modifier le véhicule :</h1>
+
+    {{ form_start(form) }}
+        
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.nom, { 'attr': {'class': 'form-control', 'placeholder': 'Nom'|trans} }) }}
+            {{ form_label(form.nom, 'Nom'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+        </div>
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.modele, { 'attr': {'class': 'form-control', 'placeholder': 'Modèle'|trans} }) }}
+            {{ form_label(form.modele, 'Modèle'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+        </div>
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'style': 'height: 17em;', 'placeholder': 'Description'|trans} }) }}
+            {{ form_label(form.description, 'Description'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+        </div>
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.prix, { 'attr': {'class': 'form-control', 'placeholder': 'Prix'|trans} }) }}
+            {{ form_label(form.prix, 'Prix'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+        </div>
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.lien_redirection, { 'attr': {'class': 'form-control', 'placeholder': 'Lien de redirection'|trans} }) }}
+            {{ form_label(form.lien_redirection, 'Lien de redirection'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+        </div>
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.date_creation, { 'attr': {'class': 'form-control', 'placeholder': 'Date de création'|trans} }) }}
+            {{ form_label(form.date_creation, 'Date de création'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+        </div>
+        
+        <div class="col-3 form-floating mb-3 ">
+            {{ form_widget(form.image, { 'attr': {'class': 'form-control', 'placeholder': 'Image'|trans} }) }}
+            {{ form_label(form.image, 'Image'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+        </div>
+
+        <div class="col-3 mb-3">
+            <div class="form-check">
+                {{ form_widget(form.en_vente, { attr: { class : "form-check-input" } }) }}
+                {{ form_label(form.en_vente, 'En Vente', { 'label_attr': {'class': 'form-check-label'} }) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-outline-warning my-3">Modifier</button>
+        
+    {{ form_end(form) }}
+
+{% endblock %}

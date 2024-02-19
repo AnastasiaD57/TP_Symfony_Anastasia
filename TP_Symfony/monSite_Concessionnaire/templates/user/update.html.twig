@@ -1,0 +1,43 @@
+{% extends "bootstrap.html.twig" %}
+
+{% block body %}
+
+    <h1 class="py-3">Modifier l'utilisateur :</h1>
+
+    {{ form_start(form) }}
+        
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email'|trans} }) }}
+            {{ form_label(form.email, 'Email'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+            {% if form.email.vars.errors|length > 0 %}
+                <div class="text-danger">
+                    {{ form.email.vars.errors|first.message }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.plainPassword, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de Passe'|trans} }) }}
+            {{ form_label(form.plainPassword, 'Mot de Passe'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+            {% if form.plainPassword.vars.errors|length > 0 %}
+                <div class="text-danger">
+                    {{ form.plainPassword.vars.errors|first.message }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(form.pseudo, { 'attr': {'class': 'form-control', 'placeholder': 'Pseudo'|trans} }) }}
+            {{ form_label(form.pseudo, 'Pseudo'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+            {% if form.pseudo.vars.errors|length > 0 %}
+                <div class="text-danger">
+                    {{ form.pseudo.vars.errors|first.message }}
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-outline-warning my-3">Modifier</button>
+        
+    {{ form_end(form) }}
+
+{% endblock %}

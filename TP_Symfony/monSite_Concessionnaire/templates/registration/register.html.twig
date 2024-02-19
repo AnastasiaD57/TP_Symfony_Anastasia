@@ -1,0 +1,46 @@
+{% extends "bootstrap.html.twig" %}
+
+{% block body %}
+
+    <h1 class="py-3">Ajouter un nouvel utilisateur</h1>
+    
+    {{ form_start(registrationForm) }}
+        
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email'|trans} }) }}
+            {{ form_label(registrationForm.email, 'Email'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+            {% if registrationForm.email.vars.errors|length > 0 %}
+                <div class="text-danger">
+                    {{ registrationForm.email.vars.errors|first.message }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de Passe'|trans} }) }}
+            {{ form_label(registrationForm.plainPassword, 'Mot de Passe'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+
+            {% if registrationForm.plainPassword.vars.errors|length > 0 %}
+                <div class="text-danger">
+                    {{ registrationForm.plainPassword.vars.errors|first.message }}
+                </div>
+            {% endif %}
+        </div>
+
+
+        <div class="col-3 form-floating mb-3">
+            {{ form_widget(registrationForm.pseudo, { 'attr': {'class': 'form-control', 'placeholder': 'Pseudo'|trans} }) }}
+            {{ form_label(registrationForm.pseudo, 'Pseudo'|trans, { 'label_attr': {'class': 'form-label', 'for': 'floatingInput'} }) }}
+            
+            {% if registrationForm.pseudo.vars.errors|length > 0 %}
+                <div class="text-danger">
+                    {{ registrationForm.pseudo.vars.errors|first.message }}
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-outline-success my-3">Créer</button>
+        
+    {{ form_end(registrationForm) }}
+
+{% endblock %}
